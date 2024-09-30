@@ -1,8 +1,8 @@
-# Step 1: Setting Up Data Structures
-books_collection = []  # List to store books
-users_list = []        # List to store users
 
-# Function to add a book to the collection
+books_collection = []  
+users_list = []        
+
+
 def add_book(book_id, title, author, genre, availability):
     book = {
         "ID": book_id,
@@ -13,7 +13,7 @@ def add_book(book_id, title, author, genre, availability):
     }
     books_collection.append(book)
 
-# Function to add a user to the list
+
 def add_user(user_id, name):
     user = {
         "ID": user_id,
@@ -22,8 +22,7 @@ def add_user(user_id, name):
     }
     users_list.append(user)
 
-# Step 3: Implementing Book and User Functions
-# Function to search for books
+
 def search_books(query):
     results = [book for book in books_collection if 
                query.lower() in book["Title"].lower() or 
@@ -37,13 +36,13 @@ def search_books(query):
     else:
         print("No books found matching your criteria.")
 
-# Function to view all books
+
 def view_all_books():
     print("All Books:")
     for book in books_collection:
         print(f"{book['ID']}. \"{book['Title']}\" by {book['Author']} ({book['Availability']})")
 
-# Function to view only available books
+
 def view_available_books():
     available_books = [book for book in books_collection if book["Availability"] == "Available"]
     print("Available Books:")
@@ -53,7 +52,7 @@ def view_available_books():
     else:
         print("No books are currently available.")
 
-# Function to view only checked-out books
+
 def view_checked_out_books():
     checked_out_books = [book for book in books_collection if book["Availability"] == "Checked Out"]
     print("Checked-Out Books:")
@@ -63,7 +62,7 @@ def view_checked_out_books():
     else:
         print("No books are currently checked out.")
 
-# Step 4: Borrowing and Returning Books
+
 def borrow_book(user_id, book_id):
     user = next((u for u in users_list if u["ID"] == user_id), None)
     book = next((b for b in books_collection if b["ID"] == book_id), None)
@@ -92,7 +91,6 @@ def return_book(user_id, book_id):
     else:
         print("Returning failed: User or book not found, or book was not borrowed.")
 
-# Step 6: User Input and Interaction
 def menu():
     while True:
         print("\nWelcome to the Community Library System!")
@@ -130,7 +128,6 @@ def menu():
         else:
             print("Invalid choice, please try again.")
 
-# Step 7: Initialize Data
 def initialize_data():
     add_book(1, "1-To Kill a Mockingbird", "Harper Lee", "Fiction", "Available")
     add_book(2, "2-1984", "George Orwell", "Dystopian", "Checked Out")
@@ -140,6 +137,6 @@ def initialize_data():
     add_user(1, "Alice")
     add_user(2, "Bob")
 
-# Run the program
+
 initialize_data()
 menu()
